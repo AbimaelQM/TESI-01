@@ -12,19 +12,40 @@ def conexao():
     except Error as error:
         print(error)
 
-sql_insert = "INSERT INTO cliente VALUES(4, 'Teste', '11111111111');"
-sql_table = '''CREATE TABLE cçiente(
-                id INTEGER PRIMARY KEY,
+
+sql_queryAll = 'SELECT * FROM cliente'
+sql_update = 'UPDATE cliente SET nome="Bill" WHERE id=5;'
+sql_delete = 'DELETE FROM cliente WHERE id=4;'
+sql_insert = "INSERT INTO cliente( nome, cpf) VALUES('Bill', '11111111111');"
+sql_table = '''CREATE TABLE cliente(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
                 nome VARCHAR(60) NOT NULL,
                 cpf VARCHAR(11) NOT NULL);
 '''
 
+
+def query(sql):
+    try:
+        con = conexao()
+        cursor = con.cursor()
+        cursor.execute(sql)
+        resultado = cursor.fetchall()
+        con.close()
+        return resultado
+    except Error as error:
+        print(error)
+
+
 def insert(sql):
-    con = conexao()
-    cursor =  con.cursor()
-    cursor.execute(sql)
-    con.commit()
-    print("Registro inserido com sucesso!")
+    try:
+        con = conexao()
+        cursor = con.cursor()
+        cursor.execute(sql)
+        con.commit()
+        print("Registro inserido com sucesso!")
+    except Error as er:
+        print(er)
+
 
 def tabela(sql):
     con = conexao()
@@ -34,5 +55,25 @@ def tabela(sql):
     print("Tabela criada!")
     con.close()
 
-tabela(sql_table)
+
+def delete(sql):
+    con = conexao()
+    cursor = con.cursor()
+    cursor.execute(sql)
+    con.commit()
+    print("Registro excluido com sucesso!")
+
+
+def update(sql):
+    con = conexao()
+    cursor = con.cursor()
+    cursor.execute(sql)
+    con.commit()
+    print("Registro atualizado com sucesso!")
+
+
+# tabela(sql_table)
 insert(sql_insert)
+# update(sql_update)
+# for i in consulta(sql_consultas):
+#     print (i)
