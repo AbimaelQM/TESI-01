@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
 
-import dbConnection as db
+# import dbConnection as db
 
 
 class Tela:
@@ -58,15 +58,15 @@ class Tela:
         for i in self.tvw.get_children():
             self.tvw.delete(i)
         query = 'SELECT * FROM cliente;'
-        dados = db.query(query)
-        for linha in dados:
-            self.tvw.insert('', 'end', values=linha)
+        # dados = db.query(query)
+        # for linha in dados:
+        #     self.tvw.insert('', 'end', values=linha)
 
     def inserir(self):
         nome = self.ent_nome.get()
         cpf = self.ent_cpf.get()
         sql_inserir = f'INSERT INTO cliente(nome, cpf) VALUES ("{nome}", "{cpf}");'
-        db.insert(sql_inserir)
+        # db.insert(sql_inserir)
         messagebox.showinfo("Aviso", "Cliente inserido com sucesso!")
         self.limpar_campos()
         self.atualizar_tvw()
@@ -89,7 +89,7 @@ class Tela:
         selecionado = self.tvw.selection()
         id = self.tvw.item(selecionado, 'values')[0]
         update = f'UPDATE cliente SET nome="{nome}",cpf="{cpf}" WHERE id={id};'
-        db.update(update)
+        # db.update(update)
         messagebox.showinfo("Aviso", "Cliente atualizado com sucesso!")
         self.btn_atualizar['state'] = tk.NORMAL
         self.btn_inserir['state'] = tk.NORMAL
@@ -112,7 +112,7 @@ class Tela:
         item = self.tvw.item(selecionado, 'values')
         id = item[0]
         delete = f'DELETE FROM cliente WHERE id={id}'
-        db.delete(delete)
+        # db.delete(delete)
         messagebox.showinfo("Aviso", "Cliente excluido com sucesso!")
         self.atualizar_tvw()
 

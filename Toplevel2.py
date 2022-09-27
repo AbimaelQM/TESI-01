@@ -11,9 +11,9 @@ class Tela:
 
     def abrir_toplevel(self):
 
-        self.janela.iconify()
+        # self.janela.iconify()
         self.janela.grab_set()
-        #self.janela.withdraw()
+        self.janela.withdraw()
         self.janela_secundaria = tk.Toplevel()
         self.janela_secundaria.title("TOP")
         self.janela_secundaria.geometry("300x300")
