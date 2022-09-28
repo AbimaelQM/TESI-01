@@ -28,7 +28,6 @@ class TelaLogin:
 
     def logar(self):
         topLogar = tk.Toplevel(self.tela_login)
-        # topLogar.lift()
         TelaHome(topLogar)
         self.tela_login.grab_set()
         self.tela_login.withdraw()
