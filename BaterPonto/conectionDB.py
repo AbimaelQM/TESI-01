@@ -20,7 +20,9 @@ sql_insert = "INSERT INTO cliente( nome, cpf) VALUES('Bill', '11111111111');"
 sql_table_funcionario = '''CREATE TABLE funcionario(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 nome VARCHAR(60) NOT NULL,
-                senha VARCHAR(11) NOT NULL);
+                email VARCHAR(60) NOT NULL UNIQUE,
+                senha VARCHAR(11) NOT NULL,
+                role VARCHAR(4) NOT NULL);
 '''
 
 sql_table_ponto = '''CREATE TABLE ponto(
@@ -81,7 +83,8 @@ def update(sql):
     print("Registro atualizado com sucesso!")
 
 
-tabela(sql_table_ponto)
+# tabela(sql_table_funcionario)
+# tabela(sql_table_ponto)
 # insert(sql_insert)
 # update(sql_update)
 # for i in consulta(sql_consultas):

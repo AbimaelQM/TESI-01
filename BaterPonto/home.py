@@ -24,6 +24,6 @@ class TelaHome:
         self.tela_home.grab_set()
 
     def checkout(self):
-        topCheckin = tk.Toplevel(self.tela_home)
-        TelaCheckout(topCheckin)
+        topCheckout = tk.Toplevel(self.tela_home)
+        TelaCheckout(topCheckout)
         self.tela_home.grab_set()
